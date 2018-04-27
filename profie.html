@@ -65,4 +65,20 @@ div {
 </div>
 
 </body>
+<script>
+$.getJSON("https://api.eatstreet.com/publicapi/v1/user/485ca34bedf9153e7ecdb0c1c698d2cee41ee9406039e889",
+  function(data) {
+       var table = $('#display'), row = null, data = null;
+       $.each(data, function(id, obj){
+               row = $('<tr></tr>'); // build a row
+               $.each(obj, function(colIndex, property) {
+                   data = $('<td></td>', { //build a td element
+                       text : property[colIndex] // assign the value from the iterated json property
+                   }).appendTo(row); 
+               });
+           });
+           row.appendTo(table); //finally append the row to the table
+      });
+});
+</script>
 </html>
